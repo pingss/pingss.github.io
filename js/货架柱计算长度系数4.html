@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>货架柱计算长度系数</title>
+<script type="text/javascript">
+
+function nCalculate1(){
+	var x=document.getElementById("first").getElementsByTagName("input");
+	for (i=0;i<11;i++){
+		if (isNaN(x[i].value)){
+			alert(x[i].value+"  is not a number!");
+			x[13].value =NaN;return;
+			}
+		}
+	var k2=Number(x[0].value),ni=x[1].value,nl=x[2].value,nishang=x[3].value;
+	var nlshang=x[4].value,nizuo=x[5].value,niyou=x[6].value;
+	var nlzuo=x[7].value,nlyou=x[8].value,ne=x[9].value,nk=x[10].value;
+	var a,b,a1,b1,c,k1,k2;
+	a=ne*nizuo/nlzuo/nk;  //注意这里a已经转换成number型(与字符型加法不同)
+	b=ne*niyou/nlyou/nk;
+	a1=1/(1+2*a);
+	b1=1/(1+2*b);
+	c=a1*nizuo/nlzuo+b1*niyou/nlyou;  //与下式同时约去ne
+	k1=c/(ni/nl+nishang/nlshang);
+	//三元运算符，<1时，保留四位有效数字;>=1时,四舍五入保留四位小数
+	x[11].value=(k1<1?k1.toPrecision(4):(Math.round(k1*10000)/10000));
+	x[12].value=(k2<1?k2.toPrecision(4):(Math.round(k2*10000)/10000)); 
+	计算(k1,k2,"nu_1");
+}
+
+
+function nCalculate2(){
+	var x=document.getElementById("middle").getElementsByTagName("input");
+	for (i=0;i<12;i++){
+		if (isNaN(x[i].value)){
+			alert(x[i].value+"  is not a number!");
+			x[14].value =NaN;return;
+		}
+	}
+	var ni=x[0].value,nl=x[1].value,nixia=x[2].value,nishang=x[3].value;
+	var nlxia=x[4].value,nlshang=x[5].value,nizuo=x[6].value,niyou=x[7].value;
+	var nlzuo=x[8].value,nlyou=x[9].value,ne=x[10].value,nk=x[11].value;
+	var a,b,a1,b1,c,k1,k2;
+	a=ne*nizuo/nlzuo/nk;  //注意这里a已经转换成number型(与字符型加法不同)
+	b=ne*niyou/nlyou/nk;
+	a1=1/(1+2*a);
+	b1=1/(1+2*b);
+	c=a1*nizuo/nlzuo+b1*niyou/nlyou;  
+	k1=c/(ni/nl+nixia/nlxia);
+	k2=c/(ni/nl+nishang/nlshang);
+	x[12].value=(k1<1?k1.toPrecision(4):(Math.round(k1*10000)/10000));
+	x[13].value=(k2<1?k2.toPrecision(4):(Math.round(k2*10000)/10000)); 
+	计算(k1,k2,"nu_2");
+}
+
+function nCalculate3(){
+	var x=document.getElementById("k1k2").getElementsByTagName("input");
+	计算(x[0].value,x[1].value,"nu_3")
+}
+
+
+
+function 插值(x1, y1, x2, y2, m){
+	return (y1 - y2) * (m - x1) / (x1 - x2) + y1;
+}
+
+function 计算(k1,k2,nu_id){
+	var arr,arr1,x,y,m,n,result,nu;
+	nu=document.getElementById(nu_id);
+	//数组字面量 或用Array()构造
+	arr1 = [0, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 1, 2, 3, 4, 5, 10];
+	arr = [[0.996, 0.968, 0.945, 0.906, 0.877, 0.854, 0.835, 0.779, 0.734, 0.715, 0.705, 0.698, 0.685],
+    [0.968, 0.942, 0.92, 0.884, 0.856, 0.834, 0.816, 0.762, 0.719, 0.701, 0.691, 0.685, 0.672],
+    [0.944, 0.92, 0.898, 0.864, 0.837, 0.816, 0.799, 0.747, 0.706, 0.688, 0.679, 0.673, 0.66], 
+    [0.906, 0.883, 0.864, 0.832, 0.807, 0.788, 0.772, 0.723, 0.684, 0.668, 0.659, 0.653, 0.641], 
+    [0.877, 0.856, 0.837, 0.807, 0.784, 0.765, 0.75, 0.704, 0.667, 0.651, 0.642, 0.637, 0.626],
+    [0.854, 0.833, 0.816, 0.788, 0.765, 0.748, 0.733, 0.689, 0.653, 0.638, 0.629, 0.624, 0.613],
+    [0.835, 0.816, 0.799, 0.772, 0.75, 0.733, 0.719, 0.676, 0.641, 0.627, 0.619, 0.614, 0.603], 
+    [0.778, 0.761, 0.747, 0.723, 0.704, 0.688, 0.676, 0.637, 0.606, 0.592, 0.585, 0.58, 0.571], 
+    [0.733, 0.718, 0.705, 0.683, 0.666, 0.652, 0.641, 0.605, 0.576, 0.564, 0.557, 0.553, 0.544], 
+    [0.714, 0.7, 0.687, 0.666, 0.65, 0.637, 0.626, 0.592, 0.564, 0.552, 0.546, 0.541, 0.533],
+    [0.703, 0.69, 0.677, 0.657, 0.641, 0.628, 0.618, 0.584, 0.557, 0.545, 0.539, 0.535, 0.527],
+    [0.697, 0.683, 0.671, 0.652, 0.636, 0.623, 0.613, 0.58, 0.553, 0.541, 0.535, 0.531, 0.523], 
+    [0.683, 0.67, 0.659, 0.639, 0.624, 0.612, 0.602, 0.57, 0.544, 0.533, 0.526, 0.523, 0.515]];
+
+	for (x=0;x <= 11;x++){
+		if (arr1[x]<=k1 && k1 < arr1[x +1]) break;
+	}
+	for (y=0;y <= 11;y++){
+		if (arr1[y]<=k2 && k2 < arr1[y +1]) break;
+	}
+
+	if (x == 12 && y == 12){
+		result = arr[y][x];
+	}
+	else if (x < 12 && y == 12){
+		result =插值(arr1[x], arr[12][x], arr1[x +1], arr[12][x +1], k1);
+	}
+	else if (x == 12 && y < 12 ){
+		result = 插值(arr1[y], arr[y][12], arr1[y +1], arr[y +1][12], k2);
+	}
+	else{
+		m = 插值(arr1[x], arr[y][x], arr1[x +1], arr[y][x +1], k1);
+		n = 插值(arr1[x], arr[y +1][x], arr1[x +1], arr[y +1][x +1], k1);
+		result = 插值(arr1[y], m, arr1[y +1], n, k2);
+	}
+	nu.value=Math.round(result*10000)/10000;	
+}
+
+function 长细比(form_id){
+	var x=document.getElementById(form_id).getElementsByTagName("input");
+	var nu=x[2],nln=x[3],nr=x[4],lambda1=x[5];
+	lambda1.value=Math.round((nu.value*nln.value/nr.value)*100)/100;	
+}
+
+</script>
+
+
+<style type="text/css">
+
+form input[type=text] {
+	width:100px;
+}
+form input[readonly=readonly] {
+	background-color: #33FF66;
+	color: #36F;
+}
+form td{
+	padding:3px;
+}
+
+form.form1 {
+	width: 560px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+#k1k2 {
+	width: 560px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#nav ul {
+	list-style-type: none;
+	display: block;
+	padding: 0px;
+	margin-right: auto;
+	margin-left: auto;
+	height: 39px;
+	cursor: pointer;
+}
+#nav ul li {
+	display: block;
+	text-align: center;
+	float: left;
+	width: 130px;
+	font-size: 18px;
+	background-color: #CCF;
+	padding: 8px 0px;
+	border:1px inset;
+}
+
+
+#nav #menu {
+	margin-right: auto;
+	margin-left: auto;
+	width: 398px;
+}
+#nav {
+	margin-right: auto;
+	margin-left: auto;
+	width: 560px;
+}
+#table6 {
+	margin-left: 125px;
+	text-align: right;
+}
+#explication {
+	width: 560px;
+	border-style: dotted;
+	margin: 30px auto;
+	padding: 5px;
+}
+#explication ul {
+	list-style-type: upper-roman;
+	margin: 2px 5px 1em 15px;
+}
+
+/*鼠标移入目录实现鼠标改变样式*/
+#menu > li:hover{
+	border-style: solid;
+	cursor: hand;
+}
+</style>
+</head>
+
+<body style="background-color: #6FC;">
+<div id="nav">
+	<ul id="menu">
+	  <li style="background-color:#30C; color:#FFF">底层柱</li>
+	  <li>中间层柱</li>
+	  <li>已知k1,k2</li>
+	</ul>
+</div>
+
+<div id="datas">
+<div id="first"  style="display:block">
+	<form onchange="nCalculate1()" class="form1">
+	<table style="text-align:right">
+	<tbody>
+	<tr>
+		<td>k2：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>底层立柱惯性矩：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>底层立柱高度：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>第二层立柱惯性矩：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>第二层立柱高度：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>横梁（左）惯性矩：<input type="text" /></td>
+		<td>横梁（右）惯性矩：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>横梁（左）长度：<input type="text" /></td>
+		<td>横梁（右）长度：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>梁弹性模量：<input type="text" value="206000"/></td>
+	</tr>
+	<tr>
+		<td>梁柱节点刚度：<input type="text" /></td>
+	</tr>
+	</tbody>
+	</table>
+	</form>
+	<hr />
+
+	<!-- onchange="长细比('first-cxb')"  注意引号用法  -->
+	<form onchange="长细比('first-cxb')" id="first-cxb" class="form1">
+	<table style="text-align:right">
+	<tbody>
+	<tr>
+		<td>k1：<input type="text" readonly="readonly" /></td>
+	</tr>
+	<tr>
+		<td>k2：<input type="text" readonly="readonly" /></td>
+	</tr>
+	<tr>
+		<td>计算长度系数（主）：<input type="text" id="nu_1" readonly="readonly"/></td>
+	</tr>
+	<tr>
+		<td>无支承长度（主）：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>立柱回转半径：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>长细比（主）：<input type="text" readonly="readonly"/></td>
+	</tr>
+	</tbody>
+	</table>
+	</form>
+</div>
+
+
+<div id="middle" style="display:none">
+	<form onchange="nCalculate2()" class="form1">
+	<table style="text-align:right">
+	<tbody>
+	<tr>
+		<td>立柱惯性矩：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>立柱长度：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>下一层立柱惯性矩：<input type="text" /></td>
+		<td>上一层立柱惯性矩：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>下一层立柱高度：<input type="text" /></td>
+	<td>上一层立柱高度：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>横梁（左）惯性矩：<input type="text" /></td>
+		<td>横梁（右）惯性矩：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>横梁（左）长度：<input type="text" /></td>
+		<td>横梁（右）长度：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>梁弹性模量：<input type="text" value="206000"/></td>
+	</tr>
+	<tr>
+		<td>梁柱节点刚度：<input type="text" /></td>
+	</tr>
+	</tbody>
+	</table>
+	</form>
+	<hr />
+
+	<form onchange="长细比('middle-cxb')" id="middle-cxb" class="form1">
+	<table style="text-align:right">
+	<tbody>
+	<tr>
+		<td>k1：<input type="text" readonly="readonly" /></td>
+	</tr>
+	<tr>
+		<td>k2：<input type="text" readonly="readonly" /></td>
+	</tr>
+	<tr>
+		<td>计算长度系数（主）：<input type="text" id="nu_2" readonly="readonly"/></td>
+	</tr>
+	<tr>
+		<td>无支承长度（主）：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>立柱回转半径：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>长细比（主）：<input type="text" readonly="readonly"/></td>
+	</tr>
+	</tbody>
+	</table>
+	</form>
+</div>
+
+
+<div id="k1k2" style="display:none">
+	<form onchange="nCalculate3()">
+	<table id="table6">
+	<tbody>
+	<tr>
+		<td>k1：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>k2：<input type="text" /></td>
+	</tr>
+	</tbody>
+	</table>
+	</form>
+	<hr />
+
+	<form onchange="长细比('k1k2')">
+	<table style="text-align:right">
+	<tbody>
+	<tr>
+		<td>计算长度系数（主）：<input type="text" id="nu_3"  readonly="readonly"/></td>
+	</tr>
+	<tr>
+		<td>无支承长度（主）：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>立柱回转半径：<input type="text" /></td>
+	</tr>
+	<tr>
+		<td>长细比（主）：<input type="text" readonly="readonly"/></td>
+	</tr>
+	</tbody>
+	</table>
+	</form>
+</div>
+</div>
+
+<div id="explication">
+	<b>说明：</b>
+	<ul>
+	<li>用于欧姆柱计算长度系数及长细比计算，注意单位的统一（可用N,mm）；左（右）无横梁时可取惯性矩为0，长度为1；</li>
+	<li> 
+		计算无侧移同向失稳货架柱的计算长度系数，与《钢规》表D-1 给出的无侧移框架柱计算长度系数相比，减幅为0.4%～17.7%，当K1=1、K2=1 时，减幅最大；
+	</li>
+	<li>k1、k2 分别为相交于柱上端、柱下端的横梁线刚度之和与柱线刚度之和的比值。</li>
+	</ul>
+</div>
+
+</body>
+
+<script>
+/* 实现目录事件，变色及切换 */
+(function (){
+	var menu_list=document.getElementById("menu");
+	menu_list.addEventListener('click',changeColor);
+	
+	function changeColor(){
+		var x=event.target,liarr=event.target.parentNode.children,i,l=liarr.length;
+		var datas=document.getElementById("datas").children;
+		var k;
+		if (x.nodeName.toLowerCase()==='li'){
+			// 解决点击下一个li元素，上一个点击的元素颜色还原。
+			for (i=0;i<l;i++){
+				liarr[i].style.backgroundColor="#CCF";
+				liarr[i].style.color="inherit";
+				datas[i].style.display="none";
+				liarr[i]===x?k=i:null;	
+			}
+			x.style.backgroundColor="#30C";
+			x.style.color="#FFF";
+			datas[k].style.display="block";
+		}	
+	}	
+})();
+
+
+</script>
+
+
+</html>
