@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
+	
 	<style type="text/css">
 
 	div {
@@ -439,9 +440,14 @@
 	</style>
 </head>
 <body>
-<a href="/js/货架柱计算长度系数4.html">货架柱计算长度系数计算</a>
+<div>
+<a href="http://pingss.github.io/js/货架柱计算长度系数4.html">货架柱计算长度系数计算</a>
+</div>
+<br/><br/>
+<input type="text" id="inp" />
+<input type="button" id="que" value="确定" />
 
-
+<div id="pig" style="display:none">
 <div class="pig_container">
 	<!-- 尾巴 -->
 	<div class="tail_left"></div>
@@ -512,6 +518,15 @@
 		<div class="face"></div>
 	</div>
 </div>
-
+</div>
 </body>
+
+<script>
+	(function(){
+	var a=document.getElementById("inp"),b=document.getElementById("que"),zz=document.getElementById("pig");
+	b.onclick=function(){
+		a.value=="pig"?(zz.style.display="block"):null;
+	}
+	})()
+	</script>
 </html>
