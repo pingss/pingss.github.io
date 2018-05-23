@@ -1,21 +1,22 @@
 <html>
 <head>
-<!--±¾Õ¾jQuery¿â-->
+<meta charset="UTF-8">
+<!--æœ¬ç«™jQueryåº“-->
 <script type="text/javascript" src="lib\jquery-3.3.1.js"></script>
-<!--ÒıÓÃjQuery¿â-->
+<!--å¼•ç”¨jQueryåº“-->
 <!--script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script-->
 <script>
 
 $(document).ready(function() {
-	//ÉèÖÃËùÓĞÁ¬½ÓÒÔĞÂ´°¿ÚĞÎÊ½´ò¿ª
+	//è®¾ç½®æ‰€æœ‰è¿æ¥ä»¥æ–°çª—å£å½¢å¼æ‰“å¼€
 	$("a").attr("target","view_window")||$("a").attr("target","_blank");
 	
-    //À©Õ¹°å¿éÏÔÊ¾ÓëÒş²Ø
+    //æ‰©å±•æ¿å—æ˜¾ç¤ºä¸éšè—
 	$("#extend_button").click(function(){
 		$("#extend").toggle()
-		$(this).val($(this).val()==="À©Õ¹"?"Òş²Ø":"À©Õ¹");
+		$(this).val($(this).val()==="æ‰©å±•"?"éšè—":"æ‰©å±•");
 	});
-	//À©Õ¹°å¿éÊäÈë¿òÌí¼ÓonkeydownÊÂ¼ş£¨²¶»ñ»Ø³µ£©£¬²¥·Å°´Å¥Ìí¼ÓonclickÊÂ¼ş
+	//æ‰©å±•æ¿å—è¾“å…¥æ¡†æ·»åŠ onkeydownäº‹ä»¶ï¼ˆæ•è·å›è½¦ï¼‰ï¼Œæ’­æ”¾æŒ‰é’®æ·»åŠ onclickäº‹ä»¶
 	$("#video_url").keydown(function(event){
 		event.which==13?$("#video_play").click():null;	
 	});
@@ -65,33 +66,33 @@ margin:20px auto;
         <input name="tn" type="hidden" value="SE_zzsearchcode_shhzc78w">
         <a href="http://www.baidu.com/" ><img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="Baidu" align="bottom" border="0"  valign="bottom"></a>
         <input type="text"  name="word" size="30" baiduSug="1" id="word">
-        <input type="submit"  value="°Ù¶ÈËÑË÷" id="sspp">
+        <input type="submit"  value="ç™¾åº¦æœç´¢" id="sspp">
     </td></tr></table>
 </form>
-<!--ËÑË÷¿òÌáÊ¾¹¦ÄÜ-->
-<!--±¾Õ¾>
+<!--æœç´¢æ¡†æç¤ºåŠŸèƒ½-->
+<!--æœ¬ç«™>
 <script src="lib/opensug.js"></script-->
-<!--ÁªÍø -->
+<!--è”ç½‘ -->
 <script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
 </br>
 <div id="nn">
-<a href="https://www.baidu.com">°Ù¶È</a>&nbsp;
-<a href="https://wx.qq.com/">Î¢ĞÅ</a>&nbsp;
+<a href="https://www.baidu.com">ç™¾åº¦</a>&nbsp;
+<a href="https://wx.qq.com/">å¾®ä¿¡</a>&nbsp;
 </div>
 
 
-<input type="button"  value="À©Õ¹" id="extend_button"/>
+<input type="button"  value="æ‰©å±•" id="extend_button"/>
 <div id="extend" style="display:none">
 <ol>
-<li>²¥·ÅÊÓÆµ
+<li>æ’­æ”¾è§†é¢‘
 <form>
 
-	<input type="radio" name="web" value="ÎŞÃûĞ¡Õ¾" checked /> ÎŞÃûĞ¡Õ¾
-	<input type="radio" name="web" value="VIPÊÓÆµ½âÎö" /> VIPÊÓÆµ½âÎö
+	<input type="radio" name="web" value="æ— åå°ç«™" checked /> æ— åå°ç«™
+	<input type="radio" name="web" value="VIPè§†é¢‘è§£æ" /> VIPè§†é¢‘è§£æ
 </form>
 <form>
-	<input type="text" id="video_url" placeholder="ÊäÈëÊÓÆµÍøÖ·">
-	<input type="button" value="²¥·Å" id="video_play">
+	<input type="text" id="video_url" placeholder="è¾“å…¥è§†é¢‘ç½‘å€">
+	<input type="button" value="æ’­æ”¾" id="video_play">
 </form>
 </li>
 <li>---</li>
