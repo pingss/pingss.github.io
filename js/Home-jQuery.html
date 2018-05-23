@@ -1,0 +1,105 @@
+<html>
+<head>
+<!--本站jQuery库-->
+<script type="text/javascript" src="lib\jquery-3.3.1.js"></script>
+<!--引用jQuery库-->
+<!--script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script-->
+<script>
+
+$(document).ready(function() {
+	//设置所有连接以新窗口形式打开
+	$("a").attr("target","view_window")||$("a").attr("target","_blank");
+	
+    //扩展板块显示与隐藏
+	$("#extend_button").click(function(){
+		$("#extend").toggle()
+		$(this).val($(this).val()==="扩展"?"隐藏":"扩展");
+	});
+	//扩展板块输入框添加onkeydown事件（捕获回车），播放按钮添加onclick事件
+	$("#video_url").keydown(function(event){
+		event.which==13?$("#video_play").click():null;	
+	});
+	$("#video_play").click(function(){
+		var video_url=$("#video_url").val();
+		window.open($("[name='web']")[0].checked?("http://www.wmxz.wang/video.php?url="+video_url):
+("http://www.vipjiexi.com/tong.php?url="+video_url));
+	});
+		
+});
+
+</script>
+
+
+
+<style>
+#word{
+width:470px;
+height:35px;
+}
+body>form{
+margin:20px auto;
+max-width:693px; 
+text-align:center;
+}
+
+#sspp{
+height:35px;
+position:relative;
+left:-8px;
+font-size:17px;
+}
+#nn{
+font-size:24px;
+width:500px;
+text-align:center;
+margin:20px auto;
+}
+
+</style>
+
+</head>
+<body>
+
+<form action="http://www.baidu.com/baidu" target="_blank">
+    <table bgcolor="#FFFFFF"><tr><td>
+        <input name="tn" type="hidden" value="SE_zzsearchcode_shhzc78w">
+        <a href="http://www.baidu.com/" ><img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="Baidu" align="bottom" border="0"  valign="bottom"></a>
+        <input type="text"  name="word" size="30" baiduSug="1" id="word">
+        <input type="submit"  value="百度搜索" id="sspp">
+    </td></tr></table>
+</form>
+<!--搜索框提示功能-->
+<!--本站>
+<script src="lib/opensug.js"></script-->
+<!--联网 -->
+<script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
+</br>
+<div id="nn">
+<a href="https://www.baidu.com">百度</a>&nbsp;
+<a href="https://wx.qq.com/">微信</a>&nbsp;
+</div>
+
+
+<input type="button"  value="扩展" id="extend_button"/>
+<div id="extend" style="display:none">
+<ol>
+<li>播放视频
+<form>
+
+	<input type="radio" name="web" value="无名小站" checked /> 无名小站
+	<input type="radio" name="web" value="VIP视频解析" /> VIP视频解析
+</form>
+<form>
+	<input type="text" id="video_url" placeholder="输入视频网址">
+	<input type="button" value="播放" id="video_play">
+</form>
+</li>
+<li>---</li>
+
+</div>
+</body>
+
+
+</html>
+
+
