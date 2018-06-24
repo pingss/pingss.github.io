@@ -156,7 +156,7 @@ function ages(date){
 		str1=''
 	}
 	if(!months){
-		str2=years?'零':'';
+		str2=(years && days)?'零':'';
 	}
 	if(!days){
 		str3='整'
