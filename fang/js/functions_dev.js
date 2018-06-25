@@ -110,7 +110,7 @@ function timeElapse(date){
 	if (seconds < 10) {
 		seconds = "0" + seconds;
 	}
-	var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+	var result = "<span class=\"digit\">" + days + "</span> 天 <span class=\"digit\">" + hours + "</span> 小时 <span class=\"digit\">" + minutes + "</span> 分钟 <span class=\"digit\">" + seconds + "</span> 秒"; 
 	$("#elapseClock").html(result);
 }
 
@@ -161,7 +161,7 @@ function ages(date){
 	if(!days){
 		str3='整'
 	}
-	$("#123").html(str1+str2+str3);
+	$("#ages").html(str1+str2+str3);
 	
 	
 	
@@ -169,7 +169,7 @@ function ages(date){
 
 function showMessages() {
 	adjustWordsPosition();
-	$('#messages').fadeIn(5000, function() {
+	$('#messages').fadeIn(3000, function() {
 		showLoveU();
 	});
 }
@@ -185,5 +185,5 @@ function adjustCodePosition() {
 }
 
 function showLoveU() {
-	$('#loveu').fadeIn(3000);
+	$('#loveu').fadeIn(1000);
 }

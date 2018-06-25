@@ -13,47 +13,35 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/garden.js"></script>
     <script type="text/javascript" src="js/functions_dev.js"></script>
+	<!--以下两个有备份，以防七牛链接失效-->
+	<script type="text/javascript" src="http://olx8kgiw6.bkt.clouddn.com/lovetree/calendar.js"></script>
+	<script type="text/javascript" src="http://olx8kgiw6.bkt.clouddn.com/lovetree/addon.js" charset="utf-8"></script>
 </head>
 
 <body>
+    <div class="formusic" style="z-index: -99999 !important; height: 0;">
+      <audio id="bg" style="visibility: hidden; width: 0 !important; height: 0 !important;" autoplay="true" controls="false">
+       <!--source id="bgmp3" src="http://olx8kgiw6.bkt.clouddn.com/lovetree/Valentine_s_Day.mp3" type="audio/mpeg"-->
+      </audio>
+    <!-- <embed name="MUSIC1" src="http://www.1t2t.com/1t/mid/76.mid" mastersound="" hidden="true" loop="-1" autostart="true">
+    </embed> -->
+    </div>
+  
 	<div id="mainDiv">
 		<div id="content">
 			<div id="code">
 				<span class="comments">时光荏苒，宝宝转眼间已经</span><br /><br />
-				<span class="keyword" id="123"></span><br /><br />
-				<span class="comments">祝愿宝宝一天天健康成长！</span><br /><br />
-				<!--span class="comments">/**</span><br />
-				<span class="space"/><span class="comments">* We are both Fudan SSers and programmers,</span><br />
-				<span class="space"/><span class="comments">* so I write some code to celebrate our 1st anniversary.</span><br />
-				<span class="space"/><span class="comments">*/</span><br />
-				Boy i = <span class="keyword">new</span> Boy(<span class="string">"hackerzhou"</span>);<br />
-				Girl u = <span class="keyword">new</span> Girl(<span class="string">"MaryNee"</span>);<br />
-				<span class="comments">// Nov 2, 2010, I told you I love you. </span><br />
-				i.love(u);<br />
-				<span class="comments">// Luckily, you accepted and became my girlfriend eversince.</span><br />
-				u.accepted();<br />
-				<span class="comments">// Since then, I miss u every day.</span><br />
-				i.miss(u);<br />
-				<span class="comments">// And take care of u and our love.</span><br />
-				i.takeCareOf(u);<br />
-				<span class="comments">// You say that you won't be so easy to marry me.</span><br />
-				<span class="comments">// So I keep waiting and I have confidence that you will.</span><br />
-				<span class="keyword">boolean</span> isHesitate = <span class="keyword">true</span>;<br />
-				<span class="keyword">while</span> (isHesitate) {<br />
-				<span class="placeholder"/>i.waitFor(u);<br />
-				<span class="placeholder"/><span class="comments">// I think it is an important decision</span><br />
-				<span class="placeholder"/><span class="comments">// and you should think it over.</span><br />
-				<span class="placeholder"/>isHesitate = u.thinkOver();<br />
-				}<br />
-				<span class="comments">// After a romantic wedding, we will live happily ever after.</span><br />
-				i.marry(u);<br />
-				i.liveHappilyWith(u);<br /-->
+				<span class="keyword" id="ages"></span><br /><br />
+				<span class="comments">祝愿宝宝健康成长</span><br /><br />
+				<!--xx节快乐-->
+				<span class="comments"><span class="festival">天天</span>快乐！</span><br /><br />
+				<!--span class="comments">/**</span><br /-->
 			</div>
 			<div id="loveHeart">
 				<canvas id="garden"></canvas>
 				<div id="words">
 					<div id="messages">
-						方彦希 已经降临
+						方彦希 已经降临 <br/><br/>
 						<div id="elapseClock"></div>
 					</div>
 					<div id="loveu">
@@ -68,6 +56,64 @@
 			Copyright © 2011 <a href='http://hackerzhou.me'>hackerzhou.me</a> 2009-2011
 		</div-->
 	</div>
+	<script type="text/javascript">
+	(function() {
+        var dayAddon = new DayAddon(calendar, 'J', '方彦希', {
+          y: 2018, // 2013年
+          M: 3, // 3 月
+          d: 23,
+          h: 8,
+          m: 10,
+          s: 0
+        });
+        // 每年的7月13日
+        dayAddon.addSpecial('生日', 0, 1, 4, true);
+        dayAddon.addSpecial('一百天', 2018, 5, 30);
+		dayAddon.addSpecial('儿童节', 0, 6, 1);
+        // 每年的阴历七月初七
+        dayAddon.addSpecial('新年', 0, 1, 1, true);
+        dayAddon.addSpecial('乞巧节', 0, 7, 7, true);
+        dayAddon.addSpecial('元宵节', 0, 1, 15, true);
+        dayAddon.addSpecial('端午节', 0, 5, 5, true);
+        dayAddon.addSpecial('中秋节', 0, 8, 15, true);
+        dayAddon.addSpecial('重阳节', 0, 9, 9, true);
+        dayAddon.addSpecial('腊八节', 0, 12, 8, true);
+
+        // 阳历节日
+        dayAddon.addSpecial('元旦', 0, 1, 1);
+        dayAddon.addSpecial('情人节', 0, 2, 14);
+        dayAddon.addSpecial('女神节', 0, 3, 7);
+        dayAddon.addSpecial('女王节', 0, 3, 8);
+        dayAddon.addSpecial('愚人节', 0, 4, 1);
+        dayAddon.addSpecial('劳动节', 0, 5, 1);
+        dayAddon.addSpecial('青年节', 0, 5, 4);
+        dayAddon.addSpecial('国庆节', 0, 10, 1);
+        dayAddon.addSpecial('万圣节', 0, 11, 23);
+        dayAddon.addSpecial('平安夜', 0, 12, 24);
+        dayAddon.addSpecial('圣诞节', 0, 12, 25);
+
+        dayAddon.display();
+        // 本人七牛上的歌曲有:天空之城等
+        if (dayAddon.festival === '生日') {
+          $('#bg').attr("src", "http://olx8kgiw6.bkt.clouddn.com/lovetree/Happy_Birthday.mp3");
+          $('#bg')[0].play();
+        }
+
+        var treeAddon = new TreeAddon(width, height, {
+            maxCount: Math.floor(dayAddon.days / 100),
+            maxLength: smallScreen ? 80 : 100,
+            maxWidth: smallScreen ? 16 : 32,/*
+            bloomWidth: smallScreen ? width - 40 : width,
+            bloomHeight: smallScreen ? height - 40: height - 40,*/
+            bloomRadius: Math.ceil(height/3)
+          }
+        );
+        canvas.attr("width", width);
+        canvas.attr("height", height);
+        //if (true) return;
+      })();
+	</script>
+	
 	<script type="text/javascript">
 		var offsetX = $("#loveHeart").width() / 2;
 		var offsetY = $("#loveHeart").height() / 2 - 55;

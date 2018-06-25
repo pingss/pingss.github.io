@@ -23,7 +23,7 @@ body {
 }
 
 #elapseClock {
-	text-align: right;
+	text-align: center;
 	font-size: 18px;
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -43,6 +43,17 @@ body {
 #elapseClock .digit{
 	font-family: "digit";
 	font-size: 36px;
+}
+
+#ages .digit{
+	color: #f00;
+	font-family: "digit";
+	font-size: 26px;
+}
+
+.festival{
+  color: red;
+  font-weight: bold;
 }
 
 #loveu{
