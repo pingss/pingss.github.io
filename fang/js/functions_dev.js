@@ -114,57 +114,57 @@ function timeElapse(date){
 	$("#elapseClock").html(result);
 }
 
-function ages(date){
-	var current = new Date();
-	var dt=new Date();
-	current.setHours(0);
-	current.setMinutes(0);
-	current.setMilliseconds(0);
+function ages(date) {
+	var dt = new Date();
 	dt.setHours(0);
 	dt.setMinutes(0);
 	dt.setMilliseconds(0);
-	var days1 = date.getDate(),days2=current.getDate(),days;
-	var months1 = date.getMonth(),months2=current.getMonth(),months;
-	var years1 = date.getFullYear(),years2=current.getFullYear(),years;
-	dt.setDate(days1)
-	if (days2>=days1){
-		days=days2-days1;	
-	}else{
-		if(months2){
-			dt.setMonth(months2-1);
-		}else{
-			dt.setYear(years2-1);
+	var parseCurrent = Date.parse(dt);
+	var days1 = date.getDate(),
+		days2 = dt.getDate(),
+		days;
+	var months1 = date.getMonth(),
+		months2 = dt.getMonth(),
+		months;
+	var years1 = date.getFullYear(),
+		years2 = dt.getFullYear(),
+		years;
+	dt.setDate(days1);
+	if (days2 >= days1) {
+		days = days2 - days1;
+	} else {
+		if (months2) {
+			months2--;
+			dt.setMonth(months2);
+		} else {
+			years2--;
+			months2 = 11;
+			dt.setYear(years2);
 			dt.setMonth(11);
 		}
-		var seconds = (Date.parse(current) - Date.parse(dt)) / 1000
-		days=Math.floor(seconds / (3600 * 24))
+		var seconds = (parseCurrent - Date.parse(dt)) / 1000;
+		days = Math.floor(seconds / (3600 * 24));
 	}
-	months2=dt.getMonth();
-	years2=dt.getFullYear();
-	if(months2>=months1){
-		months=months2-months1;
-	}else{
+	if (months2 >= months1) {
+		months = months2 - months1;
+	} else {
 		years2--;
-		months=months2+12-months1;
+		months = months2 + 12 - months1;
 	}
-	years=years2-years1
-	
+	years = years2 - years1;
 	var str1 = "<span class=\"digit\">" + years + "</span> 岁 ",
-	str2 = "<span class=\"digit\">" + months + "</span> 个月 "
-	str3 = "<span class=\"digit\">" + days + "</span> 天 "; 
-	if(!years){
-		str1=''
+		str2 = "<span class=\"digit\">" + months + "</span> 个月 ",
+		str3 = "<span class=\"digit\">" + days + "</span> 天 ";
+	if (!years) {
+		str1 = '';
 	}
-	if(!months){
-		str2=(years && days)?'零':'';
+	if (!months) {
+		str2 = (years && days) ? '零' : '';
 	}
-	if(!days){
-		str3='整'
+	if (!days) {
+		str3 = '整';
 	}
-	$("#ages").html(str1+str2+str3);
-	
-	
-	
+	$("#ages").html(str1 + str2 + str3);
 }
 
 function showMessages() {

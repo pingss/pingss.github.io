@@ -35,6 +35,7 @@
 				<span class="comments">祝愿宝宝健康成长</span><br /><br />
 				<!--xx节快乐-->
 				<span class="comments"><span class="festival">天天</span>快乐！</span><br /><br />
+				<span class="comments" id="lunar"> </span><br /><br />
 				<!--span class="comments">/**</span><br /-->
 			</div>
 			<div id="loveHeart">
@@ -93,24 +94,17 @@
         dayAddon.addSpecial('圣诞节', 0, 12, 25);
 
         dayAddon.display();
+		
+		var lunar = calendar.solar2lunar();
+		var lmessage = '———' + lunar.gzYear + ' ' + lunar.Animal + '年 ' + lunar.IMonthCn + lunar.IDayCn + ' ' + lunar.ncWeek;
+		$("#lunar").html(lmessage);
+		
         // 本人七牛上的歌曲有:天空之城等
         if (dayAddon.festival === '生日') {
           $('#bg').attr("src", "http://olx8kgiw6.bkt.clouddn.com/lovetree/Happy_Birthday.mp3");
           $('#bg')[0].play();
         }
 
-        var treeAddon = new TreeAddon(width, height, {
-            maxCount: Math.floor(dayAddon.days / 100),
-            maxLength: smallScreen ? 80 : 100,
-            maxWidth: smallScreen ? 16 : 32,/*
-            bloomWidth: smallScreen ? width - 40 : width,
-            bloomHeight: smallScreen ? height - 40: height - 40,*/
-            bloomRadius: Math.ceil(height/3)
-          }
-        );
-        canvas.attr("width", width);
-        canvas.attr("height", height);
-        //if (true) return;
       })();
 	</script>
 	
