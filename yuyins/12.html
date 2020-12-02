@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>百度语音</title>
+        <script type="text/javascript">
+        function doTTS(){
+            var xx=event.target;
+			var ttsDiv = document.getElementById('bdtts_div_id');
+            var ttsAudio = document.getElementById('tts_autio_id');
+            var ttsText = xx.value;
+
+            // 这样就可实现播放内容的替换了
+            ttsDiv.removeChild(ttsAudio);
+            var au1 = '<audio id="tts_autio_id" autoplay="autoplay">';
+            var sss = '<source id="tts_source_id" src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=2&text='+ttsText+'" type="audio/mpeg">';
+            var eee = '<embed id="tts_embed_id" height="0" width="0" src="">';
+            var au2 = '</audio>';
+            ttsDiv.innerHTML = au1 + sss + eee + au2;
+
+            ttsAudio = document.getElementById('tts_autio_id');
+
+            ttsAudio.play();
+        }
+        </script>
+
+		
+		<style type="text/css">
+			textarea {
+				width:120px;
+				height:140px;
+				font-size:50px;
+				color:blue;
+
+			}
+		</style>
+		
+    </head>
+    <body style="width:1200px; margin:1 1;padding:1 1;border:1 1">
+	    <div>
+			<textarea id="tts_btn" onclick="doTTS()"> </textarea>
+			<textarea id="tts_btn" onclick="doTTS()">五香牛腱</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">酱香牛肉</textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()">酱耳朵</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">酱肉</textarea>
+		</div>
+		
+		<div>
+			<textarea id="tts_btn" onclick="doTTS()">酱汁肉</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">梅菜扣肉</textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()">酱猪手</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">卤大肠</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">卤小肠</textarea>
+		</div>
+
+
+		<div>
+			<textarea id="tts_btn" onclick="doTTS()">牛肚</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">牛百叶</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">小肠卷</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">五香大排</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">五香小排</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">咕咾肉</textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+		</div>
+		
+		<div>
+			<textarea id="tts_btn" onclick="doTTS()">奥鹅</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">盐水鹅</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">蜜汁酱鸭</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">酱香板鸭</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">酱香鸭腿</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">麻辣鸡</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">五香咸鸡</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">盐焗鸡</textarea>
+		</div>
+		
+		
+		<div>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()">鹅脚</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">鹅肫</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">鸭肫</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">鸭掌</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">鸭翅</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">鸭脖</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">鸭锁骨</textarea>
+		</div>
+		
+		<div>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()">泡椒凤爪</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">卤味鸡爪</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">酸辣凤爪</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">糖醋鸡爪</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">无骨鸭爪</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">火鸡翅</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">鸭舌</textarea>
+		</div>
+		
+		<div>
+			<textarea id="tts_btn" onclick="doTTS()">五香鹌鹑</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">夫妻肺片</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">猪心</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">猪尾巴</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">猪肝</textarea>
+			<textarea id="tts_btn" onclick="doTTS()">油爆虾</textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+		</div>
+
+
+		<div>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+			<textarea id="tts_btn" onclick="doTTS()"></textarea>
+		</div>
+
+        <div id="bdtts_div_id">
+            <audio id="tts_autio_id" autoplay="autoplay">
+                <source id="tts_source_id"  type="audio/mpeg">
+                <embed id="tts_embed_id" height="0" width="0" src="">
+            </audio>
+        </div>
+		
+    </body>
+
+
+
+<script>
+/* 将textarea设置只读 */
+(function (){
+	var paras = document.getElementsByTagName("textarea");
+	for ( var i=0;i<paras.length;i++ ) {
+     paras[i].setAttribute("readonly","readonly");      
+	}
+	
+})();
+
+</script>	
+
+
+</html>
