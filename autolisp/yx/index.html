@@ -10,18 +10,34 @@
 			width:600px;
 			margin:20px auto;
 		}
-		.x2 {
-			float: left;
-			width: 16.66666667%;
+		.footer {
+			font-size: 14px;
+			color: #999;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			min-height: 50px;
+			display: block;
+		}
+		.footer-inner {
+			text-align: center;
+			box-sizing: border-box;
+			margin: 20px auto;
+			width: 700px;
+		}
+		.powered-by, .theme-info {
+			display: inline-block;
 		}		
 		
-		
 	</style>
-	
+
 	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">	
+
 </head> 
 
-<body style="background-color: #6FC;">
+<body style="background-color: #f5f7f9;">
 	<div id="all">
 		<p><strong>画云线工具</strong></p >
 		<ul>
@@ -32,30 +48,48 @@
 
 	
 	</br>
-	</br>
-	</br>	
-	</br>
-	</br>
-	</br>
-	</br>
-	<div class="line text-big">
-		<div class="x2 x1-move">
-				<span id="busuanzi_container_site_pv">
-					<div class="padding border border-sub border-dotted fadein-bottom">
-						本站总访问量<span id="busuanzi_value_site_pv"></span>次
+
+	
+			<footer id="footer" class="footer">
+				<div class="footer-inner">
+					<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+					<div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+						<span class="with-love">
+							<i class="fa fa-user"></i>
+						</span>
+						<span class="author" itemprop="copyrightHolder"> By sp</span>
 					</div>
-				</span>
-		</div>
-		
+					<div class="powered-by">
+						<i class="fa fa-user-md"></i>
+						<span id="busuanzi_container_site_uv">
+							本站访客数:<span id="busuanzi_value_site_uv"></span>
+						</span>
+					</div>
+
+					<span class="post-meta-divider">|</span>
+					
+					<div class="powered-by">
+						<i class="fa fa-user-md"></i>
+						<span id="busuanzi_container_site_pv">
+							本站访问量:<span id="busuanzi_value_site_pv"></span>
+						</span>
+					</div>
+
+					<span class="post-meta-divider">|</span>
+
+
+					<div class="powered-by">
+						<a class="theme-link" target="_blank" href="https://pingss.github.io/autolisp/yx">sp </a> 个人专属</div>
+
+						   <span class="post-meta-divider">|</span>
+
+							<div class="theme-info">博客 </div>
+
+					</div>
+			</footer>
 			
-		<div class="x2 x1-move">
-			<span id="busuanzi_container_site_uv">
-				 <div class="padding border border-sub border-dotted fadein-right">
-					 本站总访客数<span id="busuanzi_value_site_uv"></span>人
-				 </div>
-			</span>
-		</div>
-	</div>
+			
 		
 	
 	
